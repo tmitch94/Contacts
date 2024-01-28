@@ -6,6 +6,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.junit.jupiter.api.*;
+
 public class Contact {
 
     // declare private variables to hold contact information. Contact information
@@ -84,32 +86,20 @@ public class Contact {
 
     // Method to add contacts using a unique ID
     public Contact creatingContact(Scanner sc) {
-        // 2u7 Abraham ...
-        // 123 Tacia ....
 
-        // 321 Rachel ...
-        // HashMap<String, Contact> contactInfo = new HashMap<>();
-
-        // Contact createdContact = new Contact();
-
-        // Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter your Unique ID: ");
+        System.out.print("Enter your Unique ID: ");
         String id = sc.nextLine();
         while (true) {
             if (isValid(id, 10)) {
                 setContactID(id);
                 break;
             } else {
-                System.out.println("Enter your Unique ID: ");
+                System.out.print("Enter your Unique ID: ");
                 id = sc.nextLine();
             }
         }
-        // while (isValid(id, 10) == false) {
-        // System.out.println("Enter your Unique ID: ");
-        // id = sc.nextLine();
-        // }
         setContactID(id);
+
 
         System.out.println("Enter your first name: ");
         String fName = sc.nextLine();
@@ -127,7 +117,7 @@ public class Contact {
         }
         setLastName(lName);
 
-        System.out.println("Enter your phone number. ");
+        System.out.println("Enter your phone number: ");
         String pNumber = sc.nextLine();
         while (!isValid(pNumber, 10)) {
             System.out.println("Enter your phone number. ");
@@ -135,7 +125,7 @@ public class Contact {
         }
         setPhoneNumber(pNumber);
 
-        System.out.println("Enter your address. Address must be less than 30 characters");
+        System.out.println("Enter your address: ");
         String userAddress = sc.nextLine();
         while (!isValid(userAddress, 30)) {
             System.out.println("Enter your address. Address must be less than 30 characters");
@@ -152,27 +142,29 @@ public class Contact {
     }
 
     public boolean isValid(String fieldName, int allowedLength) {
-        if (fieldName.isEmpty()) {
+        checkSpecialCharacters(fieldName);
+        if (fieldName.trim().isEmpty()) {
             System.out.println("Field can't be Empty!");
             return false;
         } else if (fieldName.length() > allowedLength) {
-            System.out.printf("Can only be %d characters or less", allowedLength);
+            System.out.printf("Can only be %d characters or less\n", allowedLength);
             return false;
         } else {
             return true;
         }
     }
 
-    // private String CheckSpecialCharacters(String fieldName) {
-    // String replacedString = "";
-    // for (int i = 0; i < fieldName.length(); i++) {
-    // char c = fieldName.charAt(i);
-    // if (c == '-') {
-    // fieldName = fieldName.replaceAll("[^\\w\\s]", replacedString);
-    // } else if (c == ' ') {
-    // fieldName = fieldName.replaceAll(" ", replacedString);
-    // }
-    // }
-    // return fieldName;
-    // }
+     private String checkSpecialCharacters(String fieldName) {
+     String replacedString = "";
+     for (int i = 0; i < fieldName.length(); i++) {
+     char c = fieldName.charAt(i);
+     if (c == '-') {
+     fieldName = fieldName.replaceAll("[^\\w\\s]", replacedString);
+     } else if (c == ' ') {
+     fieldName = fieldName.replaceAll(" ", replacedString);
+     }
+     }
+     return fieldName;
+     }
+
 }
