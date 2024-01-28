@@ -18,31 +18,6 @@ public class Contact {
     private String phoneNumber;
     private String address;
 
-    // public Contact(String contactID) {
-    // this.contactID = contactID;
-    // }
-
-    // method to read userInput for ID that does checks.
-    // public String readContactID() {
-    // Scanner sc = new Scanner(System.in);
-    // System.out.println("Enter a unique contact id: ");
-
-    // contactID = sc.nextLine();
-    // if (contactID.contains(" ")) {
-    // System.out.println("Contact ID must not have spaces!");
-    // return null;
-    // } else if (contactID.isEmpty()) {
-    // System.out.println("Contact ID can not be empty!");
-    // return null;
-    // } else if (contactID.length() >= 11) {
-    // System.out.println("Contacts can only have 1 to 10 characters. You entered "
-    // + contactID.length());
-    // return null;
-    // } else {
-    // return contactID;
-    // }
-
-    // }
 
     private void setContactID(String id) {
         this.contactID = id;
@@ -89,17 +64,11 @@ public class Contact {
 
         System.out.print("Enter your Unique ID: ");
         String id = sc.nextLine();
-        while (true) {
-            if (isValid(id, 10)) {
-                setContactID(id);
-                break;
-            } else {
-                System.out.print("Enter your Unique ID: ");
-                id = sc.nextLine();
-            }
+        while (!isValid(id, 10)) {
+            System.out.println("Enter your first name: ");
+            id = sc.nextLine();
         }
         setContactID(id);
-
 
         System.out.println("Enter your first name: ");
         String fName = sc.nextLine();

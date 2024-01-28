@@ -6,12 +6,9 @@ public class ContactService {
     HashMap<String, Contact> Contacts = new HashMap<String, Contact>();
     static Scanner sc = new Scanner(System.in);
 
-    public void deleteContact(String id) {
-        if (Contacts.containsKey(id)) {
-            Contacts.remove(id);
-        } else {
-            System.out.println( id + " Doesnt Exist");
-        }
+    public boolean deleteContact(String id) {
+
+        return false;
     }
 
     public void updateFirstName(String id) {
