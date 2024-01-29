@@ -1,12 +1,6 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.junit.jupiter.api.*;
 
 public class Contact {
 
@@ -18,6 +12,11 @@ public class Contact {
     private String phoneNumber;
     private String address;
 
+    public Contact(String contactId, String originalFirstName, String mail, String number) {
+    }
+
+    public Contact() {
+    }
 
     private void setContactID(String id) {
         this.contactID = id;
@@ -61,7 +60,6 @@ public class Contact {
 
     // Method to add contacts using a unique ID
     public Contact creatingContact(Scanner sc) {
-
         System.out.print("Enter your Unique ID: ");
         String id = sc.nextLine();
         while (!isValid(id, 10)) {

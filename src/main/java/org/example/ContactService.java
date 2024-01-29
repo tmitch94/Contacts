@@ -2,13 +2,24 @@ package org.example;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class ContactService {
     HashMap<String, Contact> Contacts = new HashMap<String, Contact>();
     static Scanner sc = new Scanner(System.in);
 
-    public boolean deleteContact(String id) {
+    public void deleteContact(String id) {
+        if (Contacts.containsKey(id)) {
+            Contacts.remove(id);
+            System.out.println(id + " Has been removed");
+        } else {
+            System.out.println("Doesnt Exists");
+        }
 
-        return false;
     }
 
     public void updateFirstName(String id) {
@@ -81,18 +92,21 @@ public class ContactService {
         Contacts.put(infoToUpdate.getContactID(), infoToUpdate);
     }
 
+
     public void addContact() {
         // Scanner scan = new Scanner(System.in);
         int counter = 1;
-        while (true){
+
             Contact newContact = new Contact();
             newContact = newContact.creatingContact(sc);
             Contacts.put(newContact.getContactID(), newContact);
+        while (true){
             System.out.println("What would you like to do next?");
             System.out.println("------------------------------------------  ");
             System.out.println("Add");
             System.out.println("Delete");
             System.out.println("Update");
+            System.out.println("Exit");
             String userInput = sc.nextLine();
             if (userInput.equalsIgnoreCase("update")) {
                 System.out.println("Please enter the corresponding number");
@@ -109,34 +123,45 @@ public class ContactService {
                             System.out.println("Enter a key value");
                             id = sc.nextLine();
                             updateFirstName(id);
-                            break;
+                            continue;
                         case 2:
                             System.out.println("Enter a key value");
                             id = sc.nextLine();
                             updateLastName(id);
-                            break;
+                            continue;
                         case 3:
                             System.out.println("Enter a key value");
                             id = sc.nextLine();
-                            updatePhoneNumber(newContact.getPhoneNumber());
-                            break;
+                            updatePhoneNumber(id);
+                            continue;
                         case 4:
                             System.out.println("Enter a key value");
                             id = sc.nextLine();
-                            updateAddress(newContact.getAddress());
-                            break;
+                            updateAddress(id);
+                            continue;
                         default:
                             System.out.println("Enter a valid choice");
-                            break;
+                            continue;
                     }
             }
 
             if (userInput.equalsIgnoreCase("Add")){
                 counter++;
                 System.out.println("Adding person number " + counter);
-            }else {
+            } else if (userInput.equalsIgnoreCase("Delete")) {
+                System.out.println("Enter contact ID you wish to delete");
+                String id = sc.nextLine();
+                deleteContact(id);
+            } else if (userInput.equalsIgnoreCase("Exit")) {
+                System.out.println("Displaying contacts");
+                System.out.println("------------------------------------------");
+                displayAllContacts();
+                System.out.println("Closing contact program");
+                sc.close();
+                System.exit(0);
+            } else {
                 break;
-            }
+        }
         }
 
     }

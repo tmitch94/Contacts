@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ContactTest {
@@ -12,11 +15,14 @@ class ContactTest {
     @DisplayName("Testing create contact method")
     void creatingContact() {
 
-
-
+    }
+    void provideInput(String data) {
+        ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testIn);
     }
 
     @Test
+    @DisplayName("Displaying is valid")
     void isValid() {
         Contact contact = new Contact();
         assertAll("contact",
