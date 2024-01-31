@@ -1,11 +1,17 @@
 package org.example;
 
+import org.apache.commons.collections4.MultiValuedMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,8 +31,35 @@ class ContactServiceTest {
     }
 
     @Test
-    public void delete(){
-        
+    public void delete() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        HashMap<String, Contact> Contacts = new HashMap<>();
+        Method setIdMethod = contact.getClass().getDeclaredMethod("setContactID", String.class);
+        setIdMethod.setAccessible(true);
+        setIdMethod.invoke(contact,"123");
+        contact.setFirstName("Tacia");
+        contact.setLastName("Mitchell");
+        contact.setPhoneNumber("7244078643");
+        contact.setAddress("Pittsburgh, Pennsylvania");
+        Contacts.put(contact.getContactID(),contact);
+
+        assertTrue(Contacts.containsKey("123"));
+
+        setIdMethod.setAccessible(true);
+        Contact addNewContact = new Contact();
+        setIdMethod.invoke(addNewContact,"456");
+        addNewContact.setFirstName("Tacia");
+        addNewContact.setLastName("Mitchell");
+        addNewContact.setPhoneNumber("7244078643");
+        addNewContact.setAddress("Pittsburgh, Pennsylvania");
+
+        Contacts.put(addNewContact.getContactID(),addNewContact);
+
+        assertTrue(Contacts.containsKey("456"));
+
+        contactService.deleteContact("456");
+        assertFalse(Contacts.containsKey("456"));
+
+
     }
 
 

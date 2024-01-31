@@ -2,14 +2,8 @@ package org.example;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 public class ContactService {
-    HashMap<String, Contact> Contacts = new HashMap<String, Contact>();
+    HashMap<String, Contact> Contacts = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
 
     public void deleteContact(String id) {
@@ -95,11 +89,11 @@ public class ContactService {
 
     public void addContact() {
         // Scanner scan = new Scanner(System.in);
-        int counter = 1;
+        int counter = 0;
+        Contact newContact = new Contact();
+        newContact = newContact.creatingContact(sc);
+        Contacts.put(newContact.getContactID(), newContact);
 
-            Contact newContact = new Contact();
-            newContact = newContact.creatingContact(sc);
-            Contacts.put(newContact.getContactID(), newContact);
         while (true){
             System.out.println("What would you like to do next?");
             System.out.println("------------------------------------------  ");
@@ -146,8 +140,12 @@ public class ContactService {
             }
 
             if (userInput.equalsIgnoreCase("Add")){
-                counter++;
-                System.out.println("Adding person number " + counter);
+                //System.out.println("Adding person number " + counter);
+                Contact addNewContact = new Contact();
+                addNewContact = addNewContact.creatingContact(sc);
+                Contacts.put(addNewContact.getContactID(),addNewContact);
+                //Contacts.clear();
+               // counter++;
             } else if (userInput.equalsIgnoreCase("Delete")) {
                 System.out.println("Enter contact ID you wish to delete");
                 String id = sc.nextLine();

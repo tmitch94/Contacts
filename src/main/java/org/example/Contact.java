@@ -12,7 +12,11 @@ public class Contact {
     private String phoneNumber;
     private String address;
 
-    public Contact(String contactId, String originalFirstName, String mail, String number) {
+    public Contact(String firstName, String lastName, String phoneNumber, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public Contact() {
@@ -104,7 +108,7 @@ public class Contact {
     }
 
     public String toString() {
-        return String.format("ID: %s %s %s  %s   %s", this.contactID, this.firstName, this.lastName, this.phoneNumber,
+        return String.format("ID: %s First Name: %s Last Name: %s  Phone Number: %s   Address: %s", this.contactID, this.firstName, this.lastName, this.phoneNumber,
                 this.address);
     }
 
