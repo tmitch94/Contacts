@@ -139,7 +139,7 @@ public class ContactService {
                     }
             }
 
-            if (userInput.equalsIgnoreCase("Add")){
+            else if (userInput.equalsIgnoreCase("Add")){
                 //System.out.println("Adding person number " + counter);
                 Contact addNewContact = new Contact();
                 addNewContact = addNewContact.creatingContact(sc);

@@ -124,18 +124,15 @@ public class Contact {
             return true;
         }
     }
+    private String checkSpecialCharacters(String fieldName) {
+        // Define the regex for special characters
+        String regex = "[!@#$%^&*()\"{}_\\[\\]|\\?/<>,.-]";
+        // Replace special characters with an empty string
+        fieldName = fieldName.replaceAll(regex, "");
+        // Replace spaces with an empty string
+        fieldName = fieldName.replaceAll(" ", "");
 
-     private String checkSpecialCharacters(String fieldName) {
-     String replacedString = "";
-     for (int i = 0; i < fieldName.length(); i++) {
-     char c = fieldName.charAt(i);
-     if (c == '-') {
-     fieldName = fieldName.replaceAll("[^\\w\\s]", replacedString);
-     } else if (c == ' ') {
-     fieldName = fieldName.replaceAll(" ", replacedString);
-     }
-     }
-     return fieldName;
-     }
+        return fieldName;
+    }
 
 }
