@@ -22,7 +22,8 @@ public class Contact {
     public Contact() {
     }
 
-    private void setContactID(String id) {
+    public void setContactID(String id) {
+        isValid(id,10);
         this.contactID = id;
     }
 
@@ -35,6 +36,7 @@ public class Contact {
     }
 
     public void setFirstName(String firstName) {
+        isValid(firstName,10);
         this.firstName = firstName;
     }
 
@@ -43,6 +45,7 @@ public class Contact {
     }
 
     public void setLastName(String lastName) {
+        isValid(lastName,10);
         this.lastName = lastName;
     }
 
@@ -51,6 +54,7 @@ public class Contact {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        isValid(phoneNumber,10);
         this.phoneNumber = phoneNumber;
     }
 
@@ -59,58 +63,16 @@ public class Contact {
     }
 
     public void setAddress(String address) {
+        isValid(phoneNumber,30);
         this.address = address;
     }
 
     // Method to add contacts using a unique ID
     public Contact creatingContact(Scanner sc) {
-        System.out.print("Enter your Unique ID: ");
-        String id = sc.nextLine();
-        while (!isValid(id, 10)) {
-            System.out.println("Enter your first name: ");
-            id = sc.nextLine();
-        }
-        setContactID(id);
-
-        System.out.println("Enter your first name: ");
-        String fName = sc.nextLine();
-        while (!isValid(fName, 10)) {
-            System.out.println("Enter your first name: ");
-            fName = sc.nextLine();
-        }
-        setFirstName(fName);
-
-        System.out.println("Enter your last name: ");
-        String lName = sc.nextLine();
-        while (!isValid(lName, 10)) {
-            System.out.println("Enter your first name: ");
-            lName = sc.nextLine();
-        }
-        setLastName(lName);
-
-        System.out.println("Enter your phone number: ");
-        String pNumber = sc.nextLine();
-        while (!isValid(pNumber, 10)) {
-            System.out.println("Enter your phone number. ");
-            pNumber = sc.nextLine();
-        }
-        setPhoneNumber(pNumber);
-
-        System.out.println("Enter your address: ");
-        String userAddress = sc.nextLine();
-        while (!isValid(userAddress, 30)) {
-            System.out.println("Enter your address. Address must be less than 30 characters");
-            userAddress = sc.nextLine();
-        }
-        setAddress(userAddress);
 
         return this;
     }
 
-    public String toString() {
-        return String.format("ID: %s First Name: %s Last Name: %s  Phone Number: %s   Address: %s", this.contactID, this.firstName, this.lastName, this.phoneNumber,
-                this.address);
-    }
 
     public boolean isValid(String fieldName, int allowedLength) {
         checkSpecialCharacters(fieldName);

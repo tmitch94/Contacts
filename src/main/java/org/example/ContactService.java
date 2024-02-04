@@ -89,78 +89,79 @@ public class ContactService {
 
     public void addContact() {
         // Scanner scan = new Scanner(System.in);
-        int counter = 0;
-        Contact newContact = new Contact();
-        newContact = newContact.creatingContact(sc);
-        Contacts.put(newContact.getContactID(), newContact);
+//        int counter = 0;
+//        Contact newContact = new Contact();
+//        newContact = newContact.creatingContact(sc);
+//        Contacts.put(newContact.getContactID(), newContact);
+//
+//        while (true){
+//            System.out.println("What would you like to do next?");
+//            System.out.println("------------------------------------------  ");
+//            System.out.println("Add");
+//            System.out.println("Delete");
+//            System.out.println("Update");
+//            System.out.println("Exit");
+//            String userInput = sc.nextLine();
+//            if (userInput.equalsIgnoreCase("update")) {
+//                System.out.println("Please enter the corresponding number");
+//                System.out.println("---------------------------------------------   ");
+//                System.out.println("1: First Name");
+//                System.out.println("2: Last Name");
+//                System.out.println("3: Phone Number");
+//                System.out.println("4: Address");
+//                int choice = sc.nextInt();
+//                sc.nextLine();
+//                String id = " ";
+//                    switch (choice) {
+//                        case 1:
+//                            System.out.println("Enter a key value");
+//                            id = sc.nextLine();
+//                            updateFirstName(id);
+//                            continue;
+//                        case 2:
+//                            System.out.println("Enter a key value");
+//                            id = sc.nextLine();
+//                            updateLastName(id);
+//                            continue;
+//                        case 3:
+//                            System.out.println("Enter a key value");
+//                            id = sc.nextLine();
+//                            updatePhoneNumber(id);
+//                            continue;
+//                        case 4:
+//                            System.out.println("Enter a key value");
+//                            id = sc.nextLine();
+//                            updateAddress(id);
+//                            continue;
+//                        default:
+//                            System.out.println("Enter a valid choice");
+//                            continue;
+//                    }
+//            }
+//
+//            else if (userInput.equalsIgnoreCase("Add")){
+//                //System.out.println("Adding person number " + counter);
+//                Contact addNewContact = new Contact();
+//                addNewContact = addNewContact.creatingContact(sc);
+//                Contacts.put(addNewContact.getContactID(),addNewContact);
+//                //Contacts.clear();
+//               // counter++;
+//            } else if (userInput.equalsIgnoreCase("Delete")) {
+//                System.out.println("Enter contact ID you wish to delete");
+//                String id = sc.nextLine();
+//                deleteContact(id);
+//            } else if (userInput.equalsIgnoreCase("Exit")) {
+//                System.out.println("Displaying contacts");
+//                System.out.println("------------------------------------------");
+//                displayAllContacts();
+//                System.out.println("Closing contact program");
+//                sc.close();
+//                System.exit(0);
+//            } else {
+//                break;
+//        }
+//        }
 
-        while (true){
-            System.out.println("What would you like to do next?");
-            System.out.println("------------------------------------------  ");
-            System.out.println("Add");
-            System.out.println("Delete");
-            System.out.println("Update");
-            System.out.println("Exit");
-            String userInput = sc.nextLine();
-            if (userInput.equalsIgnoreCase("update")) {
-                System.out.println("Please enter the corresponding number");
-                System.out.println("---------------------------------------------   ");
-                System.out.println("1: First Name");
-                System.out.println("2: Last Name");
-                System.out.println("3: Phone Number");
-                System.out.println("4: Address");
-                int choice = sc.nextInt();
-                sc.nextLine();
-                String id = " ";
-                    switch (choice) {
-                        case 1:
-                            System.out.println("Enter a key value");
-                            id = sc.nextLine();
-                            updateFirstName(id);
-                            continue;
-                        case 2:
-                            System.out.println("Enter a key value");
-                            id = sc.nextLine();
-                            updateLastName(id);
-                            continue;
-                        case 3:
-                            System.out.println("Enter a key value");
-                            id = sc.nextLine();
-                            updatePhoneNumber(id);
-                            continue;
-                        case 4:
-                            System.out.println("Enter a key value");
-                            id = sc.nextLine();
-                            updateAddress(id);
-                            continue;
-                        default:
-                            System.out.println("Enter a valid choice");
-                            continue;
-                    }
-            }
-
-            else if (userInput.equalsIgnoreCase("Add")){
-                //System.out.println("Adding person number " + counter);
-                Contact addNewContact = new Contact();
-                addNewContact = addNewContact.creatingContact(sc);
-                Contacts.put(addNewContact.getContactID(),addNewContact);
-                //Contacts.clear();
-               // counter++;
-            } else if (userInput.equalsIgnoreCase("Delete")) {
-                System.out.println("Enter contact ID you wish to delete");
-                String id = sc.nextLine();
-                deleteContact(id);
-            } else if (userInput.equalsIgnoreCase("Exit")) {
-                System.out.println("Displaying contacts");
-                System.out.println("------------------------------------------");
-                displayAllContacts();
-                System.out.println("Closing contact program");
-                sc.close();
-                System.exit(0);
-            } else {
-                break;
-        }
-        }
 
     }
 
